@@ -31,8 +31,7 @@ Example: n = 4 ==> 3, n= 0 ==> 0, n = 3 ==> 2 */
 
 function fibonacci(n) {
   // Write you logic here.
-  if (n === 0) return 0;
-  if (n === 1) return 1;
+  if (n === 1 || n === 0) return n;
   return fibonacci(n - 1) + fibonacci(n - 2);
 }
 
@@ -84,8 +83,6 @@ const permutations = (arr) => {
   recursive(arr.length, arr.slice());
   return output;
 };
-
-console.log(permutations([1, 2, 3]));
 
 describe("Test division", () => {
   test("Return the division result", () => {
