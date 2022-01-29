@@ -1,6 +1,6 @@
 /* Write a function to do the division operation without using the built-in division*/
 
-function division(number, dividedBy) {
+function division(number, dividedBy = 0) {
   // Write you logic here.
   if (number === 0 || number < dividedBy || dividedBy === 0) return 0;
   if (number === dividedBy) return 1;
@@ -16,6 +16,7 @@ pow(2,4) = 16
 function pow(x, n) {
   // Write you logic here.
   if (n === 0) return 1;
+  if (n === 1) return x;
   return x * pow(x, n - 1);
 }
 
@@ -50,11 +51,38 @@ Example:
 Input: n = 3, k = 3
 Output: "213" */
 
-function permutations(n) {
-  let arr = [];
-  // Write you logic here.
-  return arr;
-}
+const permutations = (arr) => {
+  // Keeping the function pure and not modifying external arr passed to the function
+  const output = [];
+
+  // Swapping the order of the array element
+  const swap = (arrToSwap, index1, index2) => {
+    const temp = arrToSwap[index1];
+    arrToSwap[index1] = arrToSwap[index2];
+    arrToSwap[index2] = temp;
+  };
+
+  // out main dish for the evening
+  const recursive = (n, heapArr) => {
+    if (n === 0) return output;
+    if (n === 1) {
+      output.push(heapArr.slice().join(""));
+    }
+
+    recursive(n - 1, heapArr);
+    for (let i = 0; i < n - 1; i++) {
+      if (n % 2 === 0) {
+        swap(heapArr, i, n - 1);
+      } else {
+        swap(heapArr, 0, n - 1);
+      }
+      recursive(n - 1, heapArr);
+    }
+  };
+
+  recursive(arr.length, arr.slice());
+  return output;
+};
 
 describe("Test division", () => {
   test("Return the division result", () => {
