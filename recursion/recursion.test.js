@@ -5,7 +5,7 @@ function division(number, dividedBy = 0) {
   if (number === 0 || number < dividedBy || dividedBy === 0) return 0;
   if (number === dividedBy) return 1;
   if (dividedBy === 1) return number;
-  return 1 + division(number - 1, dividedBy + 1);
+  return 1 + division(number - dividedBy, dividedBy);
 }
 
 /* Write a function that implement Math.pow(x,n) but using recursion
